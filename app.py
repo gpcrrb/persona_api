@@ -7,7 +7,7 @@ client = bigquery.Client()
 @app.route('/persona', methods=['POST'])
 def save_persona():
     data = request.json
-    table_id = "your-project-id.your-dataset.persona"
+    table_id = "project-web-dev-416401.ds_level_stage_rrb.tbl_persona"
 
     errors = client.insert_rows_json(table_id, [data])  # Make sure your data keys match the BigQuery table schema
 
@@ -16,4 +16,4 @@ def save_persona():
     return jsonify({"success": False, "errors": errors}), 500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', por
+    app.run(host='0.0.0.0', port=8080, debug=True)
